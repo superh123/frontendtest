@@ -1,0 +1,12 @@
+﻿export type Stage='GLOBE'|'COUNTRY'|'PIN_SELECTED'|'TRANSITION'|'CITY';
+export type Branch='baseline'|'shock'|'shockPlusPolicy'|'noIntervention'|'emergencyLending'|'householdSupport';
+export type ShockType='interest_rate'|'rent'|'wages'|'credit'|'tax'|'prices';
+export type Scenario={shockType:ShockType;direction:'up'|'down';magnitude:number;durationMonths:number;targetSector:string|null;promptText:string};
+export type Snapshot={tick:number;branch:Branch;stateHash:string;sharedSnapshotId:string;kpis:{employment:number;householdCash:number;businessDefaults:number;bankStress:number;publicInterventionCost:number};districts:Record<string,{employmentRate:number;disposableIncomeIndex:number;retailDemandIndex:number;firmOpenRate:number;defaultRate:number}>;firms:{id:string;district:string;open:boolean}[]};
+export type FeedItem={id:string;tick:number;level:'macro'|'micro';text:string;delta:number;direction:'up'|'down'|'flat';actorId:string|null;district:string|null;ledgerEventIds:string[];isGood:boolean|null;requiresProposal?:boolean};
+export type Building={id:string;x:number;y:number;w:number;d:number;h:number;color:string;district:string;kind:string;name:string;elevation?:number;kit?:number;awning?:string};
+export type ScenePoint=[number,number];
+export type ScenePath={id:string;kind:'road'|'footpath'|'park';district:string;points:ScenePoint[];width:number};
+export type Landmark={id:string;name:string;kind:'bridge'|'pyramid'|'salesforce'|'ferry'|'coit'|'alcatraz'|'palace'|'park';district:string;x:number;y:number;bounds:{x:number;y:number;width:number;height:number}};
+export type Tree={x:number;y:number;size:number;shade:number;kind:number};
+export type CityLayout={layoutSeed:number;simulationSeed:number;layoutHash:string;version:number;districts:{name:string;x:number;y:number}[];buildings:Building[];roads:number[];water:{name:string;lakes:{x:number;y:number;rx:number;ry:number;rotation:number}[]};parks:{x:number;y:number;w:number;d:number;name:string;district:string}[];landmarks:Landmark[];paths:ScenePath[];trees:Tree[];boats:{x:number;y:number;angle:number;sail:boolean}[];piers:{x:number;y:number;length:number}[]};

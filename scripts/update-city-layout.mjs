@@ -1,0 +1,10 @@
+﻿import fs from 'node:fs';
+import {build} from 'esbuild';
+import {pathToFileURL} from 'node:url';
+fs.mkdirSync('artifacts',{recursive:true});
+await build({entryPoints:['apps/web/src/city/cityGenerator.ts'],outfile:'artifacts/city-layout-generator.mjs',bundle:true,format:'esm',platform:'node'});
+const {generateCityLayout}=await import(pathToFileURL(process.cwd()+'/artifacts/city-layout-generator.mjs').href+'?v='+Date.now());
+const snapshots=JSON.parse(fs.readFileSync('apps/web/src/data/fixtures/sfSnapshots.json','utf8'));
+const layout=generateCityLayout(4242,snapshots.find(s=>s.tick===0&&s.branch==='baseline').firms);
+fs.writeFileSync('apps/web/src/data/fixtures/sfCityLayout.json',JSON.stringify(layout));
+console.log(JSON.stringify({hash:layout.layoutHash,buildings:layout.buildings.length,landmarks:layout.landmarks.map(l=>l.name),paths:layout.paths.length,trees:layout.trees.length}));

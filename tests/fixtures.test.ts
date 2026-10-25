@@ -1,0 +1,16 @@
+﻿import {describe,it,expect} from 'vitest';
+import {getSnapshot,getFeed,getFork,getCityLayout,getNetwork,getPayment,getInspector,getProposal} from '../apps/web/src/data/fixtures';
+import type {Branch} from '../apps/web/src/data/types';
+const branches:Branch[]=['baseline','shock','shockPlusPolicy','noIntervention','emergencyLending','householdSupport'];
+describe('offline fixture contracts',()=>{
+ it('provides all 25 exact snapshots per branch',()=>{for(const b of branches)for(let t=0;t<=24;t++){const s=getSnapshot(t,b);expect(s.tick).toBe(t);expect(s.branch).toBe(b);expect(Object.keys(s.kpis)).toEqual(['employment','householdCash','businessDefaults','bankStress','publicInterventionCost']);expect(s.firms).toHaveLength(240);}});
+ it('shares the crisis snapshot across all futures',()=>{for(const b of branches)expect(getSnapshot(6,b).stateHash).toBe(getSnapshot(6,'baseline').stateHash);expect(new Set(branches.map(b=>getSnapshot(6,b).sharedSnapshotId)).size).toBe(1);});
+ it('contains crisis deterioration and fixture-driven city closures',()=>{const a=getSnapshot(6,'shock'),b=getSnapshot(24,'shock');expect(b.kpis.employment).toBeLessThan(a.kpis.employment);expect(b.kpis.businessDefaults).toBeGreaterThan(a.kpis.businessDefaults);expect(b.districts['Mission District'].retailDemandIndex).toBeLessThan(75);expect(b.firms.find(f=>f.id==='cafe-14')?.open).toBe(false);});
+ it('provides clickable crisis chain and bounds feed size',()=>{const f=getFeed(8);for(const word of ['asset loss','Lending contracts','cannot refinance','Payroll missed'])expect(f.find(f=>f.text.includes(word))?.actorId).toBeTruthy();expect(getFeed(24).length).toBeLessThanOrEqual(30);});
+ it('has correct negative direction semantics',()=>expect(getFeed(8).filter(f=>f.text.includes('contracts')).every(f=>!f.isGood)).toBe(true));
+ it('uses an identical layout for all branches',()=>{const a=JSON.stringify(getCityLayout());getSnapshot(12,'shock');expect(JSON.stringify(getCityLayout())).toBe(a);expect(getCityLayout().layoutSeed).not.toBe(getCityLayout().simulationSeed);});
+ it('matches final recommendation numbers',()=>{const b=getSnapshot(24,'emergencyLending');expect(b.kpis).toMatchObject({employment:95.8,businessDefaults:7,bankStress:7,publicInterventionCost:1500000});expect(getFork().recommendation.text).toContain('95.8%');});
+ it('resolves exact network counterparties',()=>{const n=getNetwork();for(const e of n.edges){expect(n.nodes.some(n=>n.id===e.from)).toBe(true);expect(n.nodes.some(n=>n.id===e.to)).toBe(true);expect(e.amount).toBeGreaterThan(0);}});
+ it('settles only approved fixture payments and exposes future obligation',()=>{const p=getPayment('cafe-14')!;expect(p.offers).toHaveLength(2);expect(p.validation.status).toBe('approved');expect(p.settlement.status).toBe('settled');expect(getInspector('cafe-14').obligations.some(o=>o.amount===p.futureObligation.amount&&o.dueTick===p.futureObligation.dueTick)).toBe(true);expect(getPayment('bank-2')).toBeNull();});
+ it('labels mock data and includes real trace entries',()=>{const p=getProposal();expect(p.sourceLabel).toBe('Mock agent');expect(p.toolTrace).toHaveLength(3);expect(p.states.not_configured.text).toContain('not connected');});
+});

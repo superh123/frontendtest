@@ -1,0 +1,473 @@
+{
+  "run_id": "agent_example",
+  "simulation_id": "world_agent_example",
+  "engine_version": "0.7.0",
+  "source_tick": 0,
+  "snapshot_sha256": "20a276c65e4b1429e54ca00fdcee314f0e0b8b08354c9ff3a8c610c18e97f35c",
+  "request": {
+    "request_id": "example",
+    "mode": "demo",
+    "budget_cap_cents": 1000000,
+    "ticks": 12,
+    "max_experiments": 2
+  },
+  "status": "completed",
+  "provider": "deterministic_demo",
+  "model": "demo-policy-v1",
+  "trace": [
+    {
+      "sequence": 1,
+      "tool": "inspect_economy",
+      "arguments": {},
+      "status": "accepted",
+      "result": {
+        "metrics": {
+          "simulation_tick": 0,
+          "households": 40,
+          "businesses": 8,
+          "banks": 5,
+          "employed_households": 40,
+          "employment_rate": 1.0,
+          "household_cash_cents": 9260115,
+          "business_cash_cents": 470846,
+          "total_deposits_cents": 9730961,
+          "total_bank_reserves_cents": 2144996,
+          "total_loans_cents": 627796,
+          "business_defaults": 0,
+          "stressed_banks": 1,
+          "insolvent_banks": 1,
+          "trade_credit_outstanding_cents": 0,
+          "supplier_contract_defaults": 0,
+          "public_intervention_cost_cents": 0,
+          "public_support_disbursed_cents": 0,
+          "fiscal_transfer_cost_cents": 0,
+          "public_loan_outstanding_cents": 0
+        },
+        "banks": [
+          {
+            "bank_id": "bank_1",
+            "status": "insolvent",
+            "capital_ratio": -0.16816879293665124,
+            "liquidity_ratio": 0.21280852299212988,
+            "lending_available": false,
+            "equity_cents": -274828,
+            "assets_cents": 1634239,
+            "reserves_cents": 336459
+          },
+          {
+            "bank_id": "bank_2",
+            "status": "active",
+            "capital_ratio": 0.12895930084443533,
+            "liquidity_ratio": 0.22222030576665314,
+            "lending_available": true,
+            "equity_cents": 434830,
+            "assets_cents": 3371839,
+            "reserves_cents": 579769
+          },
+          {
+            "bank_id": "bank_3",
+            "status": "active",
+            "capital_ratio": 0.12452091613161224,
+            "liquidity_ratio": 0.2171048496910024,
+            "lending_available": true,
+            "equity_cents": 318233,
+            "assets_cents": 2555659,
+            "reserves_cents": 414540
+          },
+          {
+            "bank_id": "bank_4",
+            "status": "active",
+            "capital_ratio": 0.09888496138229882,
+            "liquidity_ratio": 0.20751389778505286,
+            "lending_available": true,
+            "equity_cents": 105382,
+            "assets_cents": 1065703,
+            "reserves_cents": 131210
+          },
+          {
+            "bank_id": "bank_5",
+            "status": "active",
+            "capital_ratio": 0.1306126427011704,
+            "liquidity_ratio": 0.22773020649884204,
+            "lending_available": true,
+            "equity_cents": 499873,
+            "assets_cents": 3827141,
+            "reserves_cents": 683018
+          }
+        ],
+        "warning": "Liquidity loans add debt; they do not restore equity. Household support may remain frozen at insolvent banks."
+      }
+    },
+    {
+      "sequence": 2,
+      "tool": "compare_interventions",
+      "arguments": {
+        "bank_id": "bank_1",
+        "budget_cents": 1000000
+      },
+      "status": "accepted",
+      "result": {
+        "fork_id": "fork_agent_example_1",
+        "snapshot_sha256": "20a276c65e4b1429e54ca00fdcee314f0e0b8b08354c9ff3a8c610c18e97f35c",
+        "request": {
+          "request_id": "agent:agent_example:0",
+          "bank_id": "bank_1",
+          "budget_cents": 1000000,
+          "ticks": 12
+        },
+        "recommended_strategy": "household_cash",
+        "branches": [
+          {
+            "strategy": "no_intervention",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 15,
+              "employment_rate": 0.375,
+              "household_cash_cents": 9978378,
+              "business_cash_cents": 272306,
+              "total_deposits_cents": 10250684,
+              "total_bank_reserves_cents": 2144996,
+              "total_loans_cents": 542584,
+              "business_defaults": 5,
+              "stressed_banks": 5,
+              "insolvent_banks": 2,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 0,
+              "public_support_disbursed_cents": 0,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 0
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 0,
+              "employment_rate": 0.0,
+              "business_defaults": 0,
+              "stressed_banks": 0,
+              "insolvent_banks": 0,
+              "household_cash_cents": 0,
+              "public_support_disbursed_cents": 0,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 0,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          },
+          {
+            "strategy": "bank_lending",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 15,
+              "employment_rate": 0.375,
+              "household_cash_cents": 10132340,
+              "business_cash_cents": 241420,
+              "total_deposits_cents": 10373760,
+              "total_bank_reserves_cents": 3144996,
+              "total_loans_cents": 680910,
+              "business_defaults": 5,
+              "stressed_banks": 4,
+              "insolvent_banks": 3,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 1000000,
+              "public_support_disbursed_cents": 1000000,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 1000000
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 0,
+              "employment_rate": 0.0,
+              "business_defaults": 0,
+              "stressed_banks": -1,
+              "insolvent_banks": 1,
+              "household_cash_cents": 153962,
+              "public_support_disbursed_cents": 1000000,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 1000000,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          },
+          {
+            "strategy": "household_cash",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 20,
+              "employment_rate": 0.5,
+              "household_cash_cents": 11158051,
+              "business_cash_cents": 289742,
+              "total_deposits_cents": 11447793,
+              "total_bank_reserves_cents": 3144996,
+              "total_loans_cents": 927788,
+              "business_defaults": 4,
+              "stressed_banks": 3,
+              "insolvent_banks": 2,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 1000000,
+              "public_support_disbursed_cents": 1000000,
+              "fiscal_transfer_cost_cents": 1000000,
+              "public_loan_outstanding_cents": 1000000
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 5,
+              "employment_rate": 0.125,
+              "business_defaults": -1,
+              "stressed_banks": -2,
+              "insolvent_banks": 0,
+              "household_cash_cents": 1179673,
+              "public_support_disbursed_cents": 1000000,
+              "fiscal_transfer_cost_cents": 1000000,
+              "public_loan_outstanding_cents": 1000000,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3,
+      "tool": "compare_interventions",
+      "arguments": {
+        "bank_id": "bank_1",
+        "budget_cents": 500000
+      },
+      "status": "accepted",
+      "result": {
+        "fork_id": "fork_agent_example_2",
+        "snapshot_sha256": "20a276c65e4b1429e54ca00fdcee314f0e0b8b08354c9ff3a8c610c18e97f35c",
+        "request": {
+          "request_id": "agent:agent_example:1",
+          "bank_id": "bank_1",
+          "budget_cents": 500000,
+          "ticks": 12
+        },
+        "recommended_strategy": "household_cash",
+        "branches": [
+          {
+            "strategy": "no_intervention",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 15,
+              "employment_rate": 0.375,
+              "household_cash_cents": 9978378,
+              "business_cash_cents": 272306,
+              "total_deposits_cents": 10250684,
+              "total_bank_reserves_cents": 2144996,
+              "total_loans_cents": 542584,
+              "business_defaults": 5,
+              "stressed_banks": 5,
+              "insolvent_banks": 2,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 0,
+              "public_support_disbursed_cents": 0,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 0
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 0,
+              "employment_rate": 0.0,
+              "business_defaults": 0,
+              "stressed_banks": 0,
+              "insolvent_banks": 0,
+              "household_cash_cents": 0,
+              "public_support_disbursed_cents": 0,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 0,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          },
+          {
+            "strategy": "bank_lending",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 15,
+              "employment_rate": 0.375,
+              "household_cash_cents": 10132340,
+              "business_cash_cents": 241420,
+              "total_deposits_cents": 10373760,
+              "total_bank_reserves_cents": 2644996,
+              "total_loans_cents": 680910,
+              "business_defaults": 5,
+              "stressed_banks": 4,
+              "insolvent_banks": 3,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 500000,
+              "public_support_disbursed_cents": 500000,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 500000
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 0,
+              "employment_rate": 0.0,
+              "business_defaults": 0,
+              "stressed_banks": -1,
+              "insolvent_banks": 1,
+              "household_cash_cents": 153962,
+              "public_support_disbursed_cents": 500000,
+              "fiscal_transfer_cost_cents": 0,
+              "public_loan_outstanding_cents": 500000,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          },
+          {
+            "strategy": "household_cash",
+            "metrics": {
+              "simulation_tick": 12,
+              "households": 40,
+              "businesses": 8,
+              "banks": 5,
+              "employed_households": 20,
+              "employment_rate": 0.5,
+              "household_cash_cents": 10635760,
+              "business_cash_cents": 289626,
+              "total_deposits_cents": 10925386,
+              "total_bank_reserves_cents": 2644996,
+              "total_loans_cents": 905381,
+              "business_defaults": 4,
+              "stressed_banks": 5,
+              "insolvent_banks": 2,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0,
+              "public_intervention_cost_cents": 500000,
+              "public_support_disbursed_cents": 500000,
+              "fiscal_transfer_cost_cents": 500000,
+              "public_loan_outstanding_cents": 500000
+            },
+            "delta_vs_no_intervention": {
+              "employed_households": 5,
+              "employment_rate": 0.125,
+              "business_defaults": -1,
+              "stressed_banks": 0,
+              "insolvent_banks": 0,
+              "household_cash_cents": 657382,
+              "public_support_disbursed_cents": 500000,
+              "fiscal_transfer_cost_cents": 500000,
+              "public_loan_outstanding_cents": 500000,
+              "trade_credit_outstanding_cents": 0,
+              "supplier_contract_defaults": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4,
+      "tool": "recommend_intervention",
+      "arguments": {
+        "fork_id": "fork_agent_example_1",
+        "strategy": "household_cash",
+        "rationale": "Deterministic demo: compare tested budgets by employment, defaults, bank stress, and gross support. This is not an AI-generated recommendation."
+      },
+      "status": "accepted",
+      "result": {
+        "fork_id": "fork_agent_example_1",
+        "strategy": "household_cash",
+        "bank_id": null,
+        "amount_cents": 1000000,
+        "rationale": "Deterministic demo: compare tested budgets by employment, defaults, bank stress, and gross support. This is not an AI-generated recommendation.",
+        "metrics": {
+          "simulation_tick": 12,
+          "households": 40,
+          "businesses": 8,
+          "banks": 5,
+          "employed_households": 20,
+          "employment_rate": 0.5,
+          "household_cash_cents": 11158051,
+          "business_cash_cents": 289742,
+          "total_deposits_cents": 11447793,
+          "total_bank_reserves_cents": 3144996,
+          "total_loans_cents": 927788,
+          "business_defaults": 4,
+          "stressed_banks": 3,
+          "insolvent_banks": 2,
+          "trade_credit_outstanding_cents": 0,
+          "supplier_contract_defaults": 0,
+          "public_intervention_cost_cents": 1000000,
+          "public_support_disbursed_cents": 1000000,
+          "fiscal_transfer_cost_cents": 1000000,
+          "public_loan_outstanding_cents": 1000000
+        },
+        "delta_vs_no_intervention": {
+          "employed_households": 5,
+          "employment_rate": 0.125,
+          "business_defaults": -1,
+          "stressed_banks": -2,
+          "insolvent_banks": 0,
+          "household_cash_cents": 1179673,
+          "public_support_disbursed_cents": 1000000,
+          "fiscal_transfer_cost_cents": 1000000,
+          "public_loan_outstanding_cents": 1000000,
+          "trade_credit_outstanding_cents": 0,
+          "supplier_contract_defaults": 0
+        }
+      }
+    }
+  ],
+  "comparison_ids": [
+    "fork_agent_example_1",
+    "fork_agent_example_2"
+  ],
+  "recommendation": {
+    "fork_id": "fork_agent_example_1",
+    "strategy": "household_cash",
+    "bank_id": null,
+    "amount_cents": 1000000,
+    "rationale": "Deterministic demo: compare tested budgets by employment, defaults, bank stress, and gross support. This is not an AI-generated recommendation.",
+    "metrics": {
+      "simulation_tick": 12,
+      "households": 40,
+      "businesses": 8,
+      "banks": 5,
+      "employed_households": 20,
+      "employment_rate": 0.5,
+      "household_cash_cents": 11158051,
+      "business_cash_cents": 289742,
+      "total_deposits_cents": 11447793,
+      "total_bank_reserves_cents": 3144996,
+      "total_loans_cents": 927788,
+      "business_defaults": 4,
+      "stressed_banks": 3,
+      "insolvent_banks": 2,
+      "public_intervention_cost_cents": 1000000,
+      "public_support_disbursed_cents": 1000000,
+      "fiscal_transfer_cost_cents": 1000000,
+      "public_loan_outstanding_cents": 1000000,
+      "trade_credit_outstanding_cents": 0,
+      "supplier_contract_defaults": 0
+    },
+    "delta_vs_no_intervention": {
+      "employed_households": 5,
+      "employment_rate": 0.125,
+      "business_defaults": -1,
+      "stressed_banks": -2,
+      "insolvent_banks": 0,
+      "household_cash_cents": 1179673,
+      "public_support_disbursed_cents": 1000000,
+      "fiscal_transfer_cost_cents": 1000000,
+      "public_loan_outstanding_cents": 1000000,
+      "trade_credit_outstanding_cents": 0,
+      "supplier_contract_defaults": 0
+    }
+  },
+  "error": null
+}

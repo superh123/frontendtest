@@ -1,0 +1,1 @@
+{"banks":["Bank 1","Bank 2","Bank 3","Bank 4"],"assetCategories":["Commercial loans","Mortgage assets","Corporate bonds"],"defaultBank":"Bank 2","defaultAsset":"Commercial loans","defaultLoss":40,"supported":{"bank":"Bank 2","asset":"Commercial loans","loss":40}}

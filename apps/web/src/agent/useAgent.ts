@@ -1,0 +1,4 @@
+﻿import {useRef,useState,useEffect} from 'react';
+import {getProposal} from '../data/fixtures';
+import {useStore} from '../state/store';
+export function useAgent(){const [state,setState]=useState<'idle'|'thinking'|'done'|'error'|'not_configured'|'accepted'|'rejected'>('idle');const timer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);const resume=useRef(false);useEffect(()=>()=>clearTimeout(timer.current),[]);const proposePolicy=()=>{clearTimeout(timer.current);resume.current=useStore.getState().playing;useStore.getState().set({playing:false});setState('thinking');timer.current=setTimeout(()=>setState('done'),1400);};const reject=()=>{clearTimeout(timer.current);setState('rejected');useStore.getState().set({playing:resume.current});};return {state,setState,proposePolicy,negotiate:proposePolicy,reject,data:getProposal()};}

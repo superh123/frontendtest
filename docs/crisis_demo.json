@@ -1,0 +1,2914 @@
+{
+  "create_world_request": {
+    "seed": 42,
+    "scenario": "credit_crunch"
+  },
+  "shock_request": {
+    "transaction_id": "demo-shock-1",
+    "bank_id": "bank_1",
+    "loss_bps": 4000
+  },
+  "shock_receipt": {
+    "transaction_id": "demo-shock-1",
+    "lines": [
+      {
+        "account_id": "bank_1:risky_assets",
+        "signed_cents": -538334
+      },
+      {
+        "account_id": "bank_1:equity",
+        "signed_cents": 538334
+      }
+    ],
+    "metadata": {
+      "type": "bank_asset_shock",
+      "tick": 0,
+      "request": {
+        "type": "bank_asset_shock",
+        "bank_id": "bank_1",
+        "loss_bps": 4000,
+        "asset_category": "risky_assets"
+      }
+    }
+  },
+  "network_before": {
+    "simulation_id": "world_crisis_example",
+    "simulation_tick": 0,
+    "exposures": [
+      {
+        "kind": "interbank",
+        "borrower_id": "bank_2",
+        "lender_id": "bank_1",
+        "amount_cents": 328026,
+        "due_tick": 5
+      },
+      {
+        "kind": "interbank",
+        "borrower_id": "bank_3",
+        "lender_id": "bank_2",
+        "amount_cents": 328026,
+        "due_tick": 5
+      },
+      {
+        "kind": "interbank",
+        "borrower_id": "bank_4",
+        "lender_id": "bank_3",
+        "amount_cents": 328026,
+        "due_tick": 5
+      },
+      {
+        "kind": "interbank",
+        "borrower_id": "bank_5",
+        "lender_id": "bank_4",
+        "amount_cents": 328026,
+        "due_tick": 5
+      },
+      {
+        "kind": "interbank",
+        "borrower_id": "bank_1",
+        "lender_id": "bank_5",
+        "amount_cents": 328026,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_1",
+        "lender_id": "bank_1",
+        "amount_cents": 82552,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_2",
+        "lender_id": "bank_2",
+        "amount_cents": 78970,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_3",
+        "lender_id": "bank_3",
+        "amount_cents": 70286,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_4",
+        "lender_id": "bank_4",
+        "amount_cents": 81624,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_5",
+        "lender_id": "bank_5",
+        "amount_cents": 84024,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_6",
+        "lender_id": "bank_1",
+        "amount_cents": 79700,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_7",
+        "lender_id": "bank_2",
+        "amount_cents": 65996,
+        "due_tick": 5
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_8",
+        "lender_id": "bank_3",
+        "amount_cents": 84644,
+        "due_tick": 5
+      }
+    ]
+  },
+  "baseline_metrics": {
+    "simulation_tick": 12,
+    "households": 40,
+    "businesses": 8,
+    "banks": 5,
+    "employed_households": 40,
+    "employment_rate": 1.0,
+    "household_cash_cents": 10055227,
+    "business_cash_cents": 275855,
+    "total_deposits_cents": 10331082,
+    "total_bank_reserves_cents": 2144996,
+    "total_loans_cents": 1227917,
+    "business_defaults": 0,
+    "stressed_banks": 0,
+    "insolvent_banks": 0,
+    "trade_credit_outstanding_cents": 0,
+    "supplier_contract_defaults": 0,
+    "public_intervention_cost_cents": 0,
+    "public_support_disbursed_cents": 0,
+    "fiscal_transfer_cost_cents": 0,
+    "public_loan_outstanding_cents": 0
+  },
+  "shocked_metrics": {
+    "simulation_tick": 12,
+    "households": 40,
+    "businesses": 8,
+    "banks": 5,
+    "employed_households": 15,
+    "employment_rate": 0.375,
+    "household_cash_cents": 9978378,
+    "business_cash_cents": 272306,
+    "total_deposits_cents": 10250684,
+    "total_bank_reserves_cents": 2144996,
+    "total_loans_cents": 542584,
+    "business_defaults": 5,
+    "stressed_banks": 5,
+    "insolvent_banks": 2,
+    "trade_credit_outstanding_cents": 0,
+    "supplier_contract_defaults": 0,
+    "public_intervention_cost_cents": 0,
+    "public_support_disbursed_cents": 0,
+    "fiscal_transfer_cost_cents": 0,
+    "public_loan_outstanding_cents": 0
+  },
+  "world_after_crisis": {
+    "simulation_id": "world_crisis_example",
+    "seed": 42,
+    "simulation_tick": 12,
+    "status": "paused",
+    "config": {
+      "seed": 42,
+      "households": 40,
+      "businesses": 8,
+      "banks": 5,
+      "scenario": "credit_crunch"
+    },
+    "metrics": {
+      "simulation_tick": 12,
+      "households": 40,
+      "businesses": 8,
+      "banks": 5,
+      "employed_households": 15,
+      "employment_rate": 0.375,
+      "household_cash_cents": 9978378,
+      "business_cash_cents": 272306,
+      "total_deposits_cents": 10250684,
+      "total_bank_reserves_cents": 2144996,
+      "total_loans_cents": 542584,
+      "business_defaults": 5,
+      "stressed_banks": 5,
+      "insolvent_banks": 2,
+      "public_intervention_cost_cents": 0,
+      "public_support_disbursed_cents": 0,
+      "fiscal_transfer_cost_cents": 0,
+      "public_loan_outstanding_cents": 0,
+      "trade_credit_outstanding_cents": 0,
+      "supplier_contract_defaults": 0
+    },
+    "entities": [
+      {
+        "id": "bank_1",
+        "name": "Bank 1",
+        "kind": "bank",
+        "status": "insolvent",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": true,
+        "capital_ratio": -0.05224156225523893,
+        "liquidity_ratio": 0.5827290900407867,
+        "lending_available": false,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "reserves": 1279993,
+            "loan_business_1": 0,
+            "loan_business_6": 0,
+            "loan_household_8": 0,
+            "loan_household_11": 0,
+            "loan_household_13": 0,
+            "loan_household_15": 0,
+            "loan_household_18": 0,
+            "loan_household_22": 0,
+            "loan_household_32": 0,
+            "loan_household_34": 0,
+            "loan_household_36": 0,
+            "interbank_asset_bank_2": 0,
+            "risky_assets": 807502
+          },
+          "liabilities": {
+            "deposit_business_1": 95732,
+            "deposit_business_6": 73327,
+            "deposit_household_8": 771517,
+            "deposit_household_11": 194357,
+            "deposit_household_13": 99546,
+            "deposit_household_15": 185479,
+            "deposit_household_18": 215840,
+            "deposit_household_22": 80021,
+            "deposit_household_32": 137257,
+            "deposit_household_34": 168499,
+            "deposit_household_36": 174974,
+            "interbank_debt_bank_5": 0
+          },
+          "equity": {
+            "equity": -109054
+          },
+          "assets_cents": 2087495,
+          "liabilities_cents": 2196549,
+          "equity_cents": -109054,
+          "balanced": true
+        }
+      },
+      {
+        "id": "bank_2",
+        "name": "Bank 2",
+        "kind": "bank",
+        "status": "stressed",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": 0.09313924966158292,
+        "liquidity_ratio": 0.06947576198934133,
+        "lending_available": false,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "reserves": 166906,
+            "loan_business_2": 0,
+            "loan_business_7": 163114,
+            "loan_household_1": 0,
+            "loan_household_5": 0,
+            "loan_household_17": 0,
+            "loan_household_24": 0,
+            "loan_household_33": 0,
+            "loan_household_39": 0,
+            "interbank_asset_bank_3": 0,
+            "risky_assets": 2319078
+          },
+          "liabilities": {
+            "deposit_business_2": 508,
+            "deposit_business_7": 6214,
+            "deposit_household_1": 935578,
+            "deposit_household_5": 996802,
+            "deposit_household_17": 101815,
+            "deposit_household_24": 190721,
+            "deposit_household_33": 76169,
+            "deposit_household_39": 94556,
+            "interbank_debt_bank_1": 0
+          },
+          "equity": {
+            "equity": 246735
+          },
+          "assets_cents": 2649098,
+          "liabilities_cents": 2402363,
+          "equity_cents": 246735,
+          "balanced": true
+        }
+      },
+      {
+        "id": "bank_3",
+        "name": "Bank 3",
+        "kind": "bank",
+        "status": "stressed",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": 0.14347509146112988,
+        "liquidity_ratio": 0.08702776136909565,
+        "lending_available": false,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "reserves": 164122,
+            "loan_business_3": 185724,
+            "loan_business_8": 193746,
+            "loan_household_6": 0,
+            "loan_household_7": 0,
+            "loan_household_14": 0,
+            "loan_household_16": 0,
+            "loan_household_23": 0,
+            "loan_household_25": 0,
+            "loan_household_27": 0,
+            "loan_household_38": 0,
+            "loan_household_40": 0,
+            "interbank_asset_bank_4": 0,
+            "risky_assets": 1658163
+          },
+          "liabilities": {
+            "deposit_business_3": 15714,
+            "deposit_business_8": 30961,
+            "deposit_household_6": 592741,
+            "deposit_household_7": 641988,
+            "deposit_household_14": 34970,
+            "deposit_household_16": 106168,
+            "deposit_household_23": 142934,
+            "deposit_household_25": 40417,
+            "deposit_household_27": 79745,
+            "deposit_household_38": 30002,
+            "deposit_household_40": 170218,
+            "interbank_debt_bank_2": 0
+          },
+          "equity": {
+            "equity": 315897
+          },
+          "assets_cents": 2201755,
+          "liabilities_cents": 1885858,
+          "equity_cents": 315897,
+          "balanced": true
+        }
+      },
+      {
+        "id": "bank_4",
+        "name": "Bank 4",
+        "kind": "bank",
+        "status": "insolvent",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": true,
+        "capital_ratio": 0.0,
+        "liquidity_ratio": 0.25210151092187183,
+        "lending_available": false,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "reserves": 176914,
+            "loan_business_4": 0,
+            "loan_household_10": 0,
+            "loan_household_20": 0,
+            "loan_household_26": 0,
+            "loan_household_30": 0,
+            "loan_household_35": 0,
+            "interbank_asset_bank_5": 0,
+            "risky_assets": 524843
+          },
+          "liabilities": {
+            "deposit_business_4": 13184,
+            "deposit_household_10": 155678,
+            "deposit_household_20": 113706,
+            "deposit_household_26": 187545,
+            "deposit_household_30": 76496,
+            "deposit_household_35": 155148,
+            "interbank_debt_bank_3": 0
+          },
+          "equity": {
+            "equity": 0
+          },
+          "assets_cents": 701757,
+          "liabilities_cents": 701757,
+          "equity_cents": 0,
+          "balanced": true
+        }
+      },
+      {
+        "id": "bank_5",
+        "name": "Bank 5",
+        "kind": "bank",
+        "status": "stressed",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": 0.008085437536863083,
+        "liquidity_ratio": 0.11652829799517453,
+        "lending_available": false,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "reserves": 357061,
+            "loan_business_5": 0,
+            "loan_household_2": 0,
+            "loan_household_3": 0,
+            "loan_household_4": 0,
+            "loan_household_9": 0,
+            "loan_household_12": 0,
+            "loan_household_19": 0,
+            "loan_household_21": 0,
+            "loan_household_28": 0,
+            "loan_household_29": 0,
+            "loan_household_31": 0,
+            "loan_household_37": 0,
+            "interbank_asset_bank_1": 0,
+            "risky_assets": 2732073
+          },
+          "liabilities": {
+            "deposit_business_5": 36666,
+            "deposit_household_2": 654760,
+            "deposit_household_3": 789556,
+            "deposit_household_4": 700910,
+            "deposit_household_9": 39531,
+            "deposit_household_12": 101881,
+            "deposit_household_19": 179738,
+            "deposit_household_21": 76304,
+            "deposit_household_28": 75810,
+            "deposit_household_29": 113957,
+            "deposit_household_31": 148497,
+            "deposit_household_37": 146547,
+            "interbank_debt_bank_4": 0
+          },
+          "equity": {
+            "equity": 24977
+          },
+          "assets_cents": 3089134,
+          "liabilities_cents": 3064157,
+          "equity_cents": 24977,
+          "balanced": true
+        }
+      },
+      {
+        "id": "government",
+        "name": "Government",
+        "kind": "government",
+        "status": "active",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {},
+          "liabilities": {},
+          "equity": {
+            "equity": 0
+          },
+          "assets_cents": 0,
+          "liabilities_cents": 0,
+          "equity_cents": 0,
+          "balanced": true
+        }
+      },
+      {
+        "id": "central_bank",
+        "name": "Central Bank",
+        "kind": "central_bank",
+        "status": "active",
+        "bank_id": null,
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {},
+          "liabilities": {},
+          "equity": {
+            "equity": 0
+          },
+          "assets_cents": 0,
+          "liabilities_cents": 0,
+          "equity_cents": 0,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_1",
+        "name": "Business 1",
+        "kind": "business",
+        "status": "defaulted",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": [],
+        "price_cents": 914,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 2,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 990,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 95732,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 95732
+          },
+          "assets_cents": 95732,
+          "liabilities_cents": 0,
+          "equity_cents": 95732,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_2",
+        "name": "Business 2",
+        "kind": "business",
+        "status": "defaulted",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": [],
+        "price_cents": 1081,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 2,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 940,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 508,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 508
+          },
+          "assets_cents": 508,
+          "liabilities_cents": 0,
+          "equity_cents": 508,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_3",
+        "name": "Business 3",
+        "kind": "business",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": [
+          "household_3",
+          "household_11",
+          "household_19",
+          "household_27",
+          "household_35"
+        ],
+        "price_cents": 1028,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": 16,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 1,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 940,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 15714,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 185724
+          },
+          "equity": {
+            "equity": -170010
+          },
+          "assets_cents": 15714,
+          "liabilities_cents": 185724,
+          "equity_cents": -170010,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_4",
+        "name": "Business 4",
+        "kind": "business",
+        "status": "defaulted",
+        "bank_id": "bank_4",
+        "employer_id": null,
+        "employees": [],
+        "price_cents": 904,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 2,
+        "missed_payroll_ticks": 1,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 970,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 13184,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 13184
+          },
+          "assets_cents": 13184,
+          "liabilities_cents": 0,
+          "equity_cents": 13184,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_5",
+        "name": "Business 5",
+        "kind": "business",
+        "status": "defaulted",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": [],
+        "price_cents": 1358,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 2,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 970,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 36666,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 36666
+          },
+          "assets_cents": 36666,
+          "liabilities_cents": 0,
+          "equity_cents": 36666,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_6",
+        "name": "Business 6",
+        "kind": "business",
+        "status": "defaulted",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": [],
+        "price_cents": 1232,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 2,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 990,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 73327,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 73327
+          },
+          "assets_cents": 73327,
+          "liabilities_cents": 0,
+          "equity_cents": 73327,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_7",
+        "name": "Business 7",
+        "kind": "business",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": [
+          "household_7",
+          "household_15",
+          "household_23",
+          "household_31",
+          "household_39"
+        ],
+        "price_cents": 830,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": 15,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 940,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 6214,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 163114
+          },
+          "equity": {
+            "equity": -156900
+          },
+          "assets_cents": 6214,
+          "liabilities_cents": 163114,
+          "equity_cents": -156900,
+          "balanced": true
+        }
+      },
+      {
+        "id": "business_8",
+        "name": "Business 8",
+        "kind": "business",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": [
+          "household_8",
+          "household_16",
+          "household_24",
+          "household_32",
+          "household_40"
+        ],
+        "price_cents": 1023,
+        "wage_cents": null,
+        "consumption_budget_cents": null,
+        "loan_due_tick": 16,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 1,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": 940,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 30961,
+            "materials": 0
+          },
+          "liabilities": {
+            "loan": 193746
+          },
+          "equity": {
+            "equity": -162785
+          },
+          "assets_cents": 30961,
+          "liabilities_cents": 193746,
+          "equity_cents": -162785,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_1",
+        "name": "Household 1",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8465,
+        "consumption_budget_cents": 5108,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 935578
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 935578
+          },
+          "assets_cents": 935578,
+          "liabilities_cents": 0,
+          "equity_cents": 935578,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_2",
+        "name": "Household 2",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8932,
+        "consumption_budget_cents": 7661,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 654760
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 654760
+          },
+          "assets_cents": 654760,
+          "liabilities_cents": 0,
+          "equity_cents": 654760,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_3",
+        "name": "Household 3",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": "business_3",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6902,
+        "consumption_budget_cents": 6839,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 789556
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 789556
+          },
+          "assets_cents": 789556,
+          "liabilities_cents": 0,
+          "equity_cents": 789556,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_4",
+        "name": "Household 4",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9315,
+        "consumption_budget_cents": 5026,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 700910
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 700910
+          },
+          "assets_cents": 700910,
+          "liabilities_cents": 0,
+          "equity_cents": 700910,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_5",
+        "name": "Household 5",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7731,
+        "consumption_budget_cents": 6393,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 996802
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 996802
+          },
+          "assets_cents": 996802,
+          "liabilities_cents": 0,
+          "equity_cents": 996802,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_6",
+        "name": "Household 6",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6881,
+        "consumption_budget_cents": 8127,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 592741
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 592741
+          },
+          "assets_cents": 592741,
+          "liabilities_cents": 0,
+          "equity_cents": 592741,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_7",
+        "name": "Household 7",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": "business_7",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6379,
+        "consumption_budget_cents": 6556,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 641988
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 641988
+          },
+          "assets_cents": 641988,
+          "liabilities_cents": 0,
+          "equity_cents": 641988,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_8",
+        "name": "Household 8",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": "business_8",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9471,
+        "consumption_budget_cents": 6408,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 771517
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 771517
+          },
+          "assets_cents": 771517,
+          "liabilities_cents": 0,
+          "equity_cents": 771517,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_9",
+        "name": "Household 9",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9305,
+        "consumption_budget_cents": 5177,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 39531
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 39531
+          },
+          "assets_cents": 39531,
+          "liabilities_cents": 0,
+          "equity_cents": 39531,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_10",
+        "name": "Household 10",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_4",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6511,
+        "consumption_budget_cents": 6550,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 155678
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 155678
+          },
+          "assets_cents": 155678,
+          "liabilities_cents": 0,
+          "equity_cents": 155678,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_11",
+        "name": "Household 11",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": "business_3",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7200,
+        "consumption_budget_cents": 8397,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 194357
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 194357
+          },
+          "assets_cents": 194357,
+          "liabilities_cents": 0,
+          "equity_cents": 194357,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_12",
+        "name": "Household 12",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8364,
+        "consumption_budget_cents": 5787,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 101881
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 101881
+          },
+          "assets_cents": 101881,
+          "liabilities_cents": 0,
+          "equity_cents": 101881,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_13",
+        "name": "Household 13",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8708,
+        "consumption_budget_cents": 5933,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 99546
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 99546
+          },
+          "assets_cents": 99546,
+          "liabilities_cents": 0,
+          "equity_cents": 99546,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_14",
+        "name": "Household 14",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9503,
+        "consumption_budget_cents": 5953,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 34970
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 34970
+          },
+          "assets_cents": 34970,
+          "liabilities_cents": 0,
+          "equity_cents": 34970,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_15",
+        "name": "Household 15",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": "business_7",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7138,
+        "consumption_budget_cents": 6857,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 185479
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 185479
+          },
+          "assets_cents": 185479,
+          "liabilities_cents": 0,
+          "equity_cents": 185479,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_16",
+        "name": "Household 16",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": "business_8",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7516,
+        "consumption_budget_cents": 6455,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 106168
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 106168
+          },
+          "assets_cents": 106168,
+          "liabilities_cents": 0,
+          "equity_cents": 106168,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_17",
+        "name": "Household 17",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7093,
+        "consumption_budget_cents": 7874,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 101815
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 101815
+          },
+          "assets_cents": 101815,
+          "liabilities_cents": 0,
+          "equity_cents": 101815,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_18",
+        "name": "Household 18",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8600,
+        "consumption_budget_cents": 5700,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 215840
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 215840
+          },
+          "assets_cents": 215840,
+          "liabilities_cents": 0,
+          "equity_cents": 215840,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_19",
+        "name": "Household 19",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": "business_3",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7002,
+        "consumption_budget_cents": 5669,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 179738
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 179738
+          },
+          "assets_cents": 179738,
+          "liabilities_cents": 0,
+          "equity_cents": 179738,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_20",
+        "name": "Household 20",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_4",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7105,
+        "consumption_budget_cents": 7621,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 113706
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 113706
+          },
+          "assets_cents": 113706,
+          "liabilities_cents": 0,
+          "equity_cents": 113706,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_21",
+        "name": "Household 21",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8804,
+        "consumption_budget_cents": 6328,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 76304
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 76304
+          },
+          "assets_cents": 76304,
+          "liabilities_cents": 0,
+          "equity_cents": 76304,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_22",
+        "name": "Household 22",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9366,
+        "consumption_budget_cents": 5131,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 80021
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 80021
+          },
+          "assets_cents": 80021,
+          "liabilities_cents": 0,
+          "equity_cents": 80021,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_23",
+        "name": "Household 23",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": "business_7",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7096,
+        "consumption_budget_cents": 5271,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 142934
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 142934
+          },
+          "assets_cents": 142934,
+          "liabilities_cents": 0,
+          "equity_cents": 142934,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_24",
+        "name": "Household 24",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": "business_8",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9589,
+        "consumption_budget_cents": 7940,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 190721
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 190721
+          },
+          "assets_cents": 190721,
+          "liabilities_cents": 0,
+          "equity_cents": 190721,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_25",
+        "name": "Household 25",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8684,
+        "consumption_budget_cents": 7044,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 40417
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 40417
+          },
+          "assets_cents": 40417,
+          "liabilities_cents": 0,
+          "equity_cents": 40417,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_26",
+        "name": "Household 26",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_4",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7879,
+        "consumption_budget_cents": 5585,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 187545
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 187545
+          },
+          "assets_cents": 187545,
+          "liabilities_cents": 0,
+          "equity_cents": 187545,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_27",
+        "name": "Household 27",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": "business_3",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7010,
+        "consumption_budget_cents": 8051,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 79745
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 79745
+          },
+          "assets_cents": 79745,
+          "liabilities_cents": 0,
+          "equity_cents": 79745,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_28",
+        "name": "Household 28",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7076,
+        "consumption_budget_cents": 8059,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 75810
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 75810
+          },
+          "assets_cents": 75810,
+          "liabilities_cents": 0,
+          "equity_cents": 75810,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_29",
+        "name": "Household 29",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9677,
+        "consumption_budget_cents": 7390,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 113957
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 113957
+          },
+          "assets_cents": 113957,
+          "liabilities_cents": 0,
+          "equity_cents": 113957,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_30",
+        "name": "Household 30",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_4",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6898,
+        "consumption_budget_cents": 5566,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 76496
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 76496
+          },
+          "assets_cents": 76496,
+          "liabilities_cents": 0,
+          "equity_cents": 76496,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_31",
+        "name": "Household 31",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": "business_7",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6372,
+        "consumption_budget_cents": 8095,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 148497
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 148497
+          },
+          "assets_cents": 148497,
+          "liabilities_cents": 0,
+          "equity_cents": 148497,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_32",
+        "name": "Household 32",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": "business_8",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6626,
+        "consumption_budget_cents": 7570,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 137257
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 137257
+          },
+          "assets_cents": 137257,
+          "liabilities_cents": 0,
+          "equity_cents": 137257,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_33",
+        "name": "Household 33",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7729,
+        "consumption_budget_cents": 7442,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 76169
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 76169
+          },
+          "assets_cents": 76169,
+          "liabilities_cents": 0,
+          "equity_cents": 76169,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_34",
+        "name": "Household 34",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7563,
+        "consumption_budget_cents": 7440,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 168499
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 168499
+          },
+          "assets_cents": 168499,
+          "liabilities_cents": 0,
+          "equity_cents": 168499,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_35",
+        "name": "Household 35",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_4",
+        "employer_id": "business_3",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7029,
+        "consumption_budget_cents": 7266,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 155148
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 155148
+          },
+          "assets_cents": 155148,
+          "liabilities_cents": 0,
+          "equity_cents": 155148,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_36",
+        "name": "Household 36",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_1",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 8952,
+        "consumption_budget_cents": 5469,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 174974
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 174974
+          },
+          "assets_cents": 174974,
+          "liabilities_cents": 0,
+          "equity_cents": 174974,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_37",
+        "name": "Household 37",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_5",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7092,
+        "consumption_budget_cents": 8148,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 146547
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 146547
+          },
+          "assets_cents": 146547,
+          "liabilities_cents": 0,
+          "equity_cents": 146547,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_38",
+        "name": "Household 38",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": null,
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 7202,
+        "consumption_budget_cents": 6780,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 30002
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 30002
+          },
+          "assets_cents": 30002,
+          "liabilities_cents": 0,
+          "equity_cents": 30002,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_39",
+        "name": "Household 39",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_2",
+        "employer_id": "business_7",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 6013,
+        "consumption_budget_cents": 7957,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 94556
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 94556
+          },
+          "assets_cents": 94556,
+          "liabilities_cents": 0,
+          "equity_cents": 94556,
+          "balanced": true
+        }
+      },
+      {
+        "id": "household_40",
+        "name": "Household 40",
+        "kind": "household",
+        "status": "active",
+        "bank_id": "bank_3",
+        "employer_id": "business_8",
+        "employees": null,
+        "price_cents": null,
+        "wage_cents": 9120,
+        "consumption_budget_cents": 5731,
+        "loan_due_tick": null,
+        "missed_debt_ticks": 0,
+        "missed_payroll_ticks": 0,
+        "interbank_default": false,
+        "capital_ratio": null,
+        "liquidity_ratio": null,
+        "lending_available": null,
+        "materials_units": null,
+        "balance_sheet": {
+          "assets": {
+            "deposit": 170218
+          },
+          "liabilities": {
+            "loan": 0
+          },
+          "equity": {
+            "equity": 170218
+          },
+          "assets_cents": 170218,
+          "liabilities_cents": 0,
+          "equity_cents": 170218,
+          "balanced": true
+        }
+      }
+    ],
+    "latest_event_sequence": 741,
+    "lineage": null
+  },
+  "network_after": {
+    "simulation_id": "world_crisis_example",
+    "simulation_tick": 12,
+    "exposures": [
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_3",
+        "lender_id": "bank_3",
+        "amount_cents": 185724,
+        "due_tick": 16
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_7",
+        "lender_id": "bank_2",
+        "amount_cents": 163114,
+        "due_tick": 15
+      },
+      {
+        "kind": "customer_loan",
+        "borrower_id": "business_8",
+        "lender_id": "bank_3",
+        "amount_cents": 193746,
+        "due_tick": 16
+      }
+    ]
+  },
+  "crisis_events": [
+    {
+      "sequence": 18,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 0,
+      "event_type": "bank_asset_loss",
+      "agent_id": "bank_1",
+      "counterparty_id": null,
+      "amount_cents": 538334,
+      "transaction_id": "demo-shock-1",
+      "details": {
+        "loss_bps": 4000,
+        "asset_category": "risky_assets"
+      }
+    },
+    {
+      "sequence": 19,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 0,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_1",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "insolvent",
+        "capital_ratio": -0.16816879293665124,
+        "liquidity_ratio": 0.21280852299212988,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 143,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "loan_default",
+      "agent_id": "business_1",
+      "counterparty_id": "bank_1",
+      "amount_cents": 82552,
+      "transaction_id": "tick:2:writeoff:business_1",
+      "details": {}
+    },
+    {
+      "sequence": 144,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_1",
+      "counterparty_id": "business_1",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 145,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_9",
+      "counterparty_id": "business_1",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 146,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_17",
+      "counterparty_id": "business_1",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 147,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_25",
+      "counterparty_id": "business_1",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 148,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_33",
+      "counterparty_id": "business_1",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 149,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "business_default",
+      "agent_id": "business_1",
+      "counterparty_id": "bank_1",
+      "amount_cents": 82552,
+      "transaction_id": "tick:2:writeoff:business_1",
+      "details": {
+        "reason": "Two consecutive days of incomplete payroll",
+        "jobs_lost": 5
+      }
+    },
+    {
+      "sequence": 150,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "loan_default",
+      "agent_id": "business_6",
+      "counterparty_id": "bank_1",
+      "amount_cents": 79700,
+      "transaction_id": "tick:2:writeoff:business_6",
+      "details": {}
+    },
+    {
+      "sequence": 151,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_6",
+      "counterparty_id": "business_6",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 152,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_14",
+      "counterparty_id": "business_6",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 153,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_22",
+      "counterparty_id": "business_6",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 154,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_30",
+      "counterparty_id": "business_6",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 155,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "job_lost",
+      "agent_id": "household_38",
+      "counterparty_id": "business_6",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 156,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 2,
+      "event_type": "business_default",
+      "agent_id": "business_6",
+      "counterparty_id": "bank_1",
+      "amount_cents": 79700,
+      "transaction_id": "tick:2:writeoff:business_6",
+      "details": {
+        "reason": "Two consecutive days of incomplete payroll",
+        "jobs_lost": 5
+      }
+    },
+    {
+      "sequence": 326,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 5,
+      "event_type": "interbank_default",
+      "agent_id": "bank_4",
+      "counterparty_id": "bank_3",
+      "amount_cents": 2336,
+      "transaction_id": "tick:5:interbank_clearing",
+      "details": {
+        "due_cents": 328026,
+        "paid_cents": 325690
+      }
+    },
+    {
+      "sequence": 329,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 5,
+      "event_type": "interbank_default",
+      "agent_id": "bank_1",
+      "counterparty_id": "bank_5",
+      "amount_cents": 328026,
+      "transaction_id": "tick:5:interbank_clearing",
+      "details": {
+        "due_cents": 328026,
+        "paid_cents": 0
+      }
+    },
+    {
+      "sequence": 331,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 5,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_4",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.1529907027874594,
+        "liquidity_ratio": 0.11992843297046771,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 332,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 5,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_5",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.05306356746555208,
+        "liquidity_ratio": 0.11633712844409154,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 411,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "loan_default",
+      "agent_id": "business_4",
+      "counterparty_id": "bank_4",
+      "amount_cents": 107718,
+      "transaction_id": "tick:6:writeoff:business_4",
+      "details": {}
+    },
+    {
+      "sequence": 412,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_4",
+      "counterparty_id": "business_4",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 413,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_12",
+      "counterparty_id": "business_4",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 414,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_20",
+      "counterparty_id": "business_4",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 415,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_28",
+      "counterparty_id": "business_4",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 416,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_36",
+      "counterparty_id": "business_4",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 417,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "business_default",
+      "agent_id": "business_4",
+      "counterparty_id": "bank_4",
+      "amount_cents": 107718,
+      "transaction_id": "tick:6:writeoff:business_4",
+      "details": {
+        "reason": "Unable to refinance matured debt",
+        "jobs_lost": 5
+      }
+    },
+    {
+      "sequence": 418,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_4",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "stressed",
+        "status": "insolvent",
+        "capital_ratio": 0.0,
+        "liquidity_ratio": 0.11740955366241664,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 420,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "loan_default",
+      "agent_id": "business_5",
+      "counterparty_id": "bank_5",
+      "amount_cents": 146870,
+      "transaction_id": "tick:6:writeoff:business_5",
+      "details": {}
+    },
+    {
+      "sequence": 421,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_5",
+      "counterparty_id": "business_5",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 422,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_13",
+      "counterparty_id": "business_5",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 423,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_21",
+      "counterparty_id": "business_5",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 424,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_29",
+      "counterparty_id": "business_5",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 425,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "job_lost",
+      "agent_id": "household_37",
+      "counterparty_id": "business_5",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 426,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 6,
+      "event_type": "business_default",
+      "agent_id": "business_5",
+      "counterparty_id": "bank_5",
+      "amount_cents": 146870,
+      "transaction_id": "tick:6:writeoff:business_5",
+      "details": {
+        "reason": "Unable to refinance matured debt",
+        "jobs_lost": 5
+      }
+    },
+    {
+      "sequence": 553,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 8,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_2",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.14964297058658543,
+        "liquidity_ratio": 0.09398479048367168,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 600,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 9,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_2",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "stressed",
+        "status": "active",
+        "capital_ratio": 0.14777570093457945,
+        "liquidity_ratio": 0.1072505552963508,
+        "lending_available": true
+      }
+    },
+    {
+      "sequence": 601,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 9,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_3",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.1461770790867617,
+        "liquidity_ratio": 0.09927540159118993,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 646,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 10,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_2",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.14980469543995376,
+        "liquidity_ratio": 0.09415572311712056,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 647,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 10,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_3",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "stressed",
+        "status": "active",
+        "capital_ratio": 0.14584032571777067,
+        "liquidity_ratio": 0.10170472664378565,
+        "lending_available": true
+      }
+    },
+    {
+      "sequence": 699,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 11,
+      "event_type": "bank_status_changed",
+      "agent_id": "bank_3",
+      "counterparty_id": null,
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {
+        "previous_status": "active",
+        "status": "stressed",
+        "capital_ratio": 0.14466645570228928,
+        "liquidity_ratio": 0.07816457017785264,
+        "lending_available": false
+      }
+    },
+    {
+      "sequence": 724,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "loan_default",
+      "agent_id": "business_2",
+      "counterparty_id": "bank_2",
+      "amount_cents": 188095,
+      "transaction_id": "tick:12:writeoff:business_2",
+      "details": {}
+    },
+    {
+      "sequence": 725,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "job_lost",
+      "agent_id": "household_2",
+      "counterparty_id": "business_2",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 726,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "job_lost",
+      "agent_id": "household_10",
+      "counterparty_id": "business_2",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 727,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "job_lost",
+      "agent_id": "household_18",
+      "counterparty_id": "business_2",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 728,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "job_lost",
+      "agent_id": "household_26",
+      "counterparty_id": "business_2",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 729,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "job_lost",
+      "agent_id": "household_34",
+      "counterparty_id": "business_2",
+      "amount_cents": null,
+      "transaction_id": null,
+      "details": {}
+    },
+    {
+      "sequence": 730,
+      "simulation_id": "world_crisis_example",
+      "simulation_tick": 12,
+      "event_type": "business_default",
+      "agent_id": "business_2",
+      "counterparty_id": "bank_2",
+      "amount_cents": 188095,
+      "transaction_id": "tick:12:writeoff:business_2",
+      "details": {
+        "reason": "Two consecutive days of incomplete payroll",
+        "jobs_lost": 5
+      }
+    }
+  ],
+  "audit": {
+    "balanced": true,
+    "journal_matches_balances": true,
+    "transaction_count": 588,
+    "account_count": 275,
+    "bank_counterparties_match": true,
+    "interbank_counterparties_match": true,
+    "public_counterparties_match": true,
+    "supplier_counterparties_match": true
+  }
+}

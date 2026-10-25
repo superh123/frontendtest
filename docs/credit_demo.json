@@ -1,0 +1,531 @@
+{
+  "settled": {
+    "run_id": "credit_settled_example",
+    "simulation_id": "world_credit_settled_example",
+    "business_id": "business_1",
+    "bank_id": "bank_1",
+    "engine_version": "0.7.0",
+    "source_tick": 0,
+    "snapshot_sha256": "fe9c4c1a58d79432f30983e816b8ffb59e243d745b992b5590d4d7996af10624",
+    "request": {
+      "request_id": "credit-example",
+      "mode": "demo",
+      "max_amount_cents": 500000,
+      "auto_settle": true
+    },
+    "status": "settled",
+    "providers": {
+      "business": "deterministic_demo",
+      "bank": "deterministic_demo"
+    },
+    "models": {
+      "business": "demo-credit-v1",
+      "bank": "demo-credit-v1"
+    },
+    "facts": {
+      "business_id": "business_1",
+      "bank_id": "bank_1",
+      "status": "active",
+      "deposit_cents": 0,
+      "available_deposit_cents": 0,
+      "debt_cents": 0,
+      "payroll_cents": 41276,
+      "payroll_shortfall_cents": 41276,
+      "credit_headroom_cents": 500000,
+      "loan_due_tick": null,
+      "recorded_sales_last_5_ticks_cents": 0,
+      "recorded_wages_last_5_ticks_cents": 0,
+      "trade_payables_cents": 0,
+      "trade_receivables_cents": 0,
+      "next_supplier_due_tick": null,
+      "bank": {
+        "status": "active",
+        "capital_ratio": 0.5880013041868927,
+        "liquidity_ratio": 1.1283150988953388,
+        "lending_available": true,
+        "equity_cents": 10000000,
+        "reserves_cents": 1618735
+      }
+    },
+    "trace": [
+      {
+        "sequence": 1,
+        "tool": "inspect_business",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "business_id": "business_1",
+          "bank_id": "bank_1",
+          "status": "active",
+          "deposit_cents": 0,
+          "available_deposit_cents": 0,
+          "debt_cents": 0,
+          "payroll_cents": 41276,
+          "payroll_shortfall_cents": 41276,
+          "credit_headroom_cents": 500000,
+          "loan_due_tick": null,
+          "recorded_sales_last_5_ticks_cents": 0,
+          "recorded_wages_last_5_ticks_cents": 0,
+          "trade_payables_cents": 0,
+          "trade_receivables_cents": 0,
+          "next_supplier_due_tick": null,
+          "bank": {
+            "status": "active",
+            "capital_ratio": 0.5880013041868927,
+            "liquidity_ratio": 1.1283150988953388,
+            "lending_available": true,
+            "equity_cents": 10000000,
+            "reserves_cents": 1618735
+          }
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      },
+      {
+        "sequence": 2,
+        "tool": "request_credit",
+        "arguments": {
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+        },
+        "status": "accepted",
+        "result": {
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      },
+      {
+        "sequence": 3,
+        "tool": "inspect_credit",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "proposal": {
+            "amount_cents": 41276,
+            "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+          },
+          "facts": {
+            "business_id": "business_1",
+            "bank_id": "bank_1",
+            "status": "active",
+            "deposit_cents": 0,
+            "available_deposit_cents": 0,
+            "debt_cents": 0,
+            "payroll_cents": 41276,
+            "payroll_shortfall_cents": 41276,
+            "credit_headroom_cents": 500000,
+            "loan_due_tick": null,
+            "recorded_sales_last_5_ticks_cents": 0,
+            "recorded_wages_last_5_ticks_cents": 0,
+            "trade_payables_cents": 0,
+            "trade_receivables_cents": 0,
+            "next_supplier_due_tick": null,
+            "bank": {
+              "status": "active",
+              "capital_ratio": 0.5880013041868927,
+              "liquidity_ratio": 1.1283150988953388,
+              "lending_available": true,
+              "equity_cents": 10000000,
+              "reserves_cents": 1618735
+            }
+          }
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      },
+      {
+        "sequence": 4,
+        "tool": "assess_credit",
+        "arguments": {
+          "amount_cents": 41276
+        },
+        "status": "accepted",
+        "result": {
+          "eligible": true,
+          "amount_cents": 41276,
+          "bank_id": "bank_1",
+          "due_tick": 5,
+          "projected_bank_health": {
+            "status": "active",
+            "capital_ratio": 0.5865776601546183,
+            "liquidity_ratio": 1.0967604022971373,
+            "lending_available": true
+          },
+          "reasons": [],
+          "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      },
+      {
+        "sequence": 5,
+        "tool": "decide_credit",
+        "arguments": {
+          "approved": true,
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints."
+        },
+        "status": "accepted",
+        "result": {
+          "approved": true,
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints.",
+          "assessment": {
+            "eligible": true,
+            "amount_cents": 41276,
+            "bank_id": "bank_1",
+            "due_tick": 5,
+            "projected_bank_health": {
+              "status": "active",
+              "capital_ratio": 0.5865776601546183,
+              "liquidity_ratio": 1.0967604022971373,
+              "lending_available": true
+            },
+            "reasons": [],
+            "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+          }
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      },
+      {
+        "sequence": 6,
+        "tool": "review_offer",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "decision": {
+            "approved": true,
+            "amount_cents": 41276,
+            "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints.",
+            "assessment": {
+              "eligible": true,
+              "amount_cents": 41276,
+              "bank_id": "bank_1",
+              "due_tick": 5,
+              "projected_bank_health": {
+                "status": "active",
+                "capital_ratio": 0.5865776601546183,
+                "liquidity_ratio": 1.0967604022971373,
+                "lending_available": true
+              },
+              "reasons": [],
+              "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+            }
+          },
+          "proposal": {
+            "amount_cents": 41276,
+            "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+          },
+          "payroll_shortfall_cents": 41276,
+          "payroll_fully_covered": true
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      },
+      {
+        "sequence": 7,
+        "tool": "accept_offer",
+        "arguments": {
+          "rationale": "Deterministic demo: accept only an offer covering the full observed payroll shortfall."
+        },
+        "status": "accepted",
+        "result": {
+          "accepted": true,
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: accept only an offer covering the full observed payroll shortfall."
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      }
+    ],
+    "proposal": {
+      "amount_cents": 41276,
+      "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+    },
+    "business_rationale": "Deterministic demo: accept only an offer covering the full observed payroll shortfall.",
+    "business_accepted": true,
+    "decision": {
+      "approved": true,
+      "amount_cents": 41276,
+      "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints.",
+      "assessment": {
+        "eligible": true,
+        "amount_cents": 41276,
+        "bank_id": "bank_1",
+        "due_tick": 5,
+        "projected_bank_health": {
+          "status": "active",
+          "capital_ratio": 0.5865776601546183,
+          "liquidity_ratio": 1.0967604022971373,
+          "lending_available": true
+        },
+        "reasons": [],
+        "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+      }
+    },
+    "settlement": {
+      "run_id": "credit_settled_example",
+      "simulation_id": "world_credit_settled_example",
+      "business_id": "business_1",
+      "bank_id": "bank_1",
+      "transaction_id": "credit:credit_settled_example",
+      "amount_cents": 41276,
+      "due_tick": 5,
+      "receipt": {
+        "transaction_id": "credit:credit_settled_example",
+        "lines": [
+          {
+            "account_id": "business_1:deposit",
+            "signed_cents": 41276
+          },
+          {
+            "account_id": "business_1:loan",
+            "signed_cents": -41276
+          },
+          {
+            "account_id": "bank_1:loan_business_1",
+            "signed_cents": 41276
+          },
+          {
+            "account_id": "bank_1:deposit_business_1",
+            "signed_cents": -41276
+          }
+        ],
+        "metadata": {
+          "type": "loan_issued",
+          "tick": 0,
+          "request": {
+            "type": "loan_issued",
+            "borrower_id": "business_1",
+            "amount_cents": 41276
+          }
+        }
+      },
+      "audit": {
+        "balanced": true,
+        "journal_matches_balances": true,
+        "transaction_count": 61,
+        "account_count": 275,
+        "bank_counterparties_match": true,
+        "interbank_counterparties_match": true,
+        "public_counterparties_match": true,
+        "supplier_counterparties_match": true
+      }
+    },
+    "error": null
+  },
+  "declined": {
+    "run_id": "credit_declined_example",
+    "simulation_id": "world_credit_declined_example",
+    "business_id": "business_1",
+    "bank_id": "bank_1",
+    "engine_version": "0.7.0",
+    "source_tick": 0,
+    "snapshot_sha256": "d7bc8b9ea9feec978abb6d6861e6368a07f8c4c2c96e8d2225fe69cdc8eebd25",
+    "request": {
+      "request_id": "credit-example",
+      "mode": "demo",
+      "max_amount_cents": 500000,
+      "auto_settle": true
+    },
+    "status": "declined",
+    "providers": {
+      "business": "deterministic_demo",
+      "bank": "deterministic_demo"
+    },
+    "models": {
+      "business": "demo-credit-v1",
+      "bank": "demo-credit-v1"
+    },
+    "facts": {
+      "business_id": "business_1",
+      "bank_id": "bank_1",
+      "status": "active",
+      "deposit_cents": 61914,
+      "available_deposit_cents": 0,
+      "debt_cents": 82552,
+      "payroll_cents": 41276,
+      "payroll_shortfall_cents": 41276,
+      "credit_headroom_cents": 417448,
+      "loan_due_tick": 5,
+      "recorded_sales_last_5_ticks_cents": 0,
+      "recorded_wages_last_5_ticks_cents": 0,
+      "trade_payables_cents": 0,
+      "trade_receivables_cents": 0,
+      "next_supplier_due_tick": null,
+      "bank": {
+        "status": "insolvent",
+        "capital_ratio": -0.16816879293665124,
+        "liquidity_ratio": 0.21280852299212988,
+        "lending_available": false,
+        "equity_cents": -274828,
+        "reserves_cents": 336459
+      }
+    },
+    "trace": [
+      {
+        "sequence": 1,
+        "tool": "inspect_business",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "business_id": "business_1",
+          "bank_id": "bank_1",
+          "status": "active",
+          "deposit_cents": 61914,
+          "available_deposit_cents": 0,
+          "debt_cents": 82552,
+          "payroll_cents": 41276,
+          "payroll_shortfall_cents": 41276,
+          "credit_headroom_cents": 417448,
+          "loan_due_tick": 5,
+          "recorded_sales_last_5_ticks_cents": 0,
+          "recorded_wages_last_5_ticks_cents": 0,
+          "trade_payables_cents": 0,
+          "trade_receivables_cents": 0,
+          "next_supplier_due_tick": null,
+          "bank": {
+            "status": "insolvent",
+            "capital_ratio": -0.16816879293665124,
+            "liquidity_ratio": 0.21280852299212988,
+            "lending_available": false,
+            "equity_cents": -274828,
+            "reserves_cents": 336459
+          }
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      },
+      {
+        "sequence": 2,
+        "tool": "request_credit",
+        "arguments": {
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+        },
+        "status": "accepted",
+        "result": {
+          "amount_cents": 41276,
+          "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+        },
+        "actor_id": "business_1",
+        "role": "business"
+      },
+      {
+        "sequence": 3,
+        "tool": "inspect_credit",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "proposal": {
+            "amount_cents": 41276,
+            "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+          },
+          "facts": {
+            "business_id": "business_1",
+            "bank_id": "bank_1",
+            "status": "active",
+            "deposit_cents": 61914,
+            "available_deposit_cents": 0,
+            "debt_cents": 82552,
+            "payroll_cents": 41276,
+            "payroll_shortfall_cents": 41276,
+            "credit_headroom_cents": 417448,
+            "loan_due_tick": 5,
+            "recorded_sales_last_5_ticks_cents": 0,
+            "recorded_wages_last_5_ticks_cents": 0,
+            "trade_payables_cents": 0,
+            "trade_receivables_cents": 0,
+            "next_supplier_due_tick": null,
+            "bank": {
+              "status": "insolvent",
+              "capital_ratio": -0.16816879293665124,
+              "liquidity_ratio": 0.21280852299212988,
+              "lending_available": false,
+              "equity_cents": -274828,
+              "reserves_cents": 336459
+            }
+          }
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      },
+      {
+        "sequence": 4,
+        "tool": "assess_credit",
+        "arguments": {
+          "amount_cents": 41276
+        },
+        "status": "accepted",
+        "result": {
+          "eligible": false,
+          "amount_cents": 41276,
+          "bank_id": "bank_1",
+          "due_tick": 5,
+          "projected_bank_health": null,
+          "reasons": [
+            "Bank capital or liquidity constraints prevent lending"
+          ],
+          "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      },
+      {
+        "sequence": 5,
+        "tool": "decide_credit",
+        "arguments": {
+          "approved": false,
+          "amount_cents": 0,
+          "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints."
+        },
+        "status": "accepted",
+        "result": {
+          "approved": false,
+          "amount_cents": 0,
+          "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints.",
+          "assessment": {
+            "eligible": false,
+            "amount_cents": 41276,
+            "bank_id": "bank_1",
+            "due_tick": 5,
+            "projected_bank_health": null,
+            "reasons": [
+              "Bank capital or liquidity constraints prevent lending"
+            ],
+            "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+          }
+        },
+        "actor_id": "bank_1",
+        "role": "bank"
+      }
+    ],
+    "proposal": {
+      "amount_cents": 41276,
+      "rationale": "Deterministic demo: request only the observed payroll gap within the authorized cap."
+    },
+    "business_rationale": null,
+    "business_accepted": null,
+    "decision": {
+      "approved": false,
+      "amount_cents": 0,
+      "rationale": "Deterministic demo: approve only principal passing recorded credit, capital, and liquidity constraints.",
+      "assessment": {
+        "eligible": false,
+        "amount_cents": 41276,
+        "bank_id": "bank_1",
+        "due_tick": 5,
+        "projected_bank_health": null,
+        "reasons": [
+          "Bank capital or liquidity constraints prevent lending"
+        ],
+        "terms": "Principal-only; an existing loan maturity is preserved. No collateral or interest is modeled."
+      }
+    },
+    "settlement": null,
+    "error": null
+  }
+}

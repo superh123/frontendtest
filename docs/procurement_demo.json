@@ -1,0 +1,540 @@
+{
+  "run": {
+    "run_id": "supply_example",
+    "simulation_id": "world_procurement_example",
+    "buyer_id": "business_1",
+    "supplier_ids": [
+      "business_2",
+      "business_3"
+    ],
+    "engine_version": "0.7.0",
+    "source_tick": 0,
+    "snapshot_sha256": "fe33af492864bafba7ea49e83c26e323f085adad994d2429ea0753915f312817",
+    "request": {
+      "request_id": "supplier-example",
+      "mode": "demo",
+      "supplier_ids": null,
+      "quantity": 20,
+      "max_total_cents": 100000,
+      "auto_settle": true
+    },
+    "status": "contracted",
+    "providers": {
+      "buyer": "deterministic_demo",
+      "business_2": "deterministic_demo",
+      "business_3": "deterministic_demo"
+    },
+    "models": {
+      "buyer": "demo-supply-v1",
+      "business_2": "demo-supply-v1",
+      "business_3": "demo-supply-v1"
+    },
+    "offers": [
+      {
+        "unit_price_cents": 594,
+        "down_payment_bps": 5000,
+        "due_in_ticks": 3,
+        "rationale": "Deterministic demo: quote available stock on standard terms.",
+        "offer_id": "offer:business_2:1",
+        "supplier_id": "business_2",
+        "quantity": 20,
+        "total_cents": 11880,
+        "down_payment_cents": 5940
+      },
+      {
+        "unit_price_cents": 565,
+        "down_payment_bps": 5000,
+        "due_in_ticks": 3,
+        "rationale": "Deterministic demo: quote available stock on standard terms.",
+        "offer_id": "offer:business_3:1",
+        "supplier_id": "business_3",
+        "quantity": 20,
+        "total_cents": 11300,
+        "down_payment_cents": 5650
+      },
+      {
+        "unit_price_cents": 508,
+        "down_payment_bps": 2000,
+        "due_in_ticks": 5,
+        "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy.",
+        "offer_id": "offer:business_3:2",
+        "supplier_id": "business_3",
+        "quantity": 20,
+        "total_cents": 10160,
+        "down_payment_cents": 2032
+      }
+    ],
+    "trace": [
+      {
+        "sequence": 1,
+        "tool": "inspect_supplier",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "supplier_id": "business_2",
+          "buyer_id": "business_1",
+          "quantity": 20,
+          "available_units": 1000,
+          "reference_unit_price_cents": 540,
+          "minimum_unit_price_cents": 432,
+          "minimum_down_payment_bps": 2000,
+          "maximum_due_in_ticks": 10,
+          "can_supply": true
+        },
+        "actor_id": "business_2",
+        "role": "supplier"
+      },
+      {
+        "sequence": 2,
+        "tool": "quote_offer",
+        "arguments": {
+          "unit_price_cents": 594,
+          "down_payment_bps": 5000,
+          "due_in_ticks": 3,
+          "rationale": "Deterministic demo: quote available stock on standard terms."
+        },
+        "status": "accepted",
+        "result": {
+          "unit_price_cents": 594,
+          "down_payment_bps": 5000,
+          "due_in_ticks": 3,
+          "rationale": "Deterministic demo: quote available stock on standard terms.",
+          "offer_id": "offer:business_2:1",
+          "supplier_id": "business_2",
+          "quantity": 20,
+          "total_cents": 11880,
+          "down_payment_cents": 5940
+        },
+        "actor_id": "business_2",
+        "role": "supplier"
+      },
+      {
+        "sequence": 3,
+        "tool": "inspect_supplier",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "supplier_id": "business_3",
+          "buyer_id": "business_1",
+          "quantity": 20,
+          "available_units": 1000,
+          "reference_unit_price_cents": 514,
+          "minimum_unit_price_cents": 411,
+          "minimum_down_payment_bps": 2000,
+          "maximum_due_in_ticks": 10,
+          "can_supply": true
+        },
+        "actor_id": "business_3",
+        "role": "supplier"
+      },
+      {
+        "sequence": 4,
+        "tool": "quote_offer",
+        "arguments": {
+          "unit_price_cents": 565,
+          "down_payment_bps": 5000,
+          "due_in_ticks": 3,
+          "rationale": "Deterministic demo: quote available stock on standard terms."
+        },
+        "status": "accepted",
+        "result": {
+          "unit_price_cents": 565,
+          "down_payment_bps": 5000,
+          "due_in_ticks": 3,
+          "rationale": "Deterministic demo: quote available stock on standard terms.",
+          "offer_id": "offer:business_3:1",
+          "supplier_id": "business_3",
+          "quantity": 20,
+          "total_cents": 11300,
+          "down_payment_cents": 5650
+        },
+        "actor_id": "business_3",
+        "role": "supplier"
+      },
+      {
+        "sequence": 5,
+        "tool": "inspect_offers",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "quantity": 20,
+          "max_total_cents": 100000,
+          "offers": [
+            {
+              "unit_price_cents": 594,
+              "down_payment_bps": 5000,
+              "due_in_ticks": 3,
+              "rationale": "Deterministic demo: quote available stock on standard terms.",
+              "offer_id": "offer:business_2:1",
+              "supplier_id": "business_2",
+              "quantity": 20,
+              "total_cents": 11880,
+              "down_payment_cents": 5940,
+              "can_settle": true,
+              "reason": null
+            },
+            {
+              "unit_price_cents": 565,
+              "down_payment_bps": 5000,
+              "due_in_ticks": 3,
+              "rationale": "Deterministic demo: quote available stock on standard terms.",
+              "offer_id": "offer:business_3:1",
+              "supplier_id": "business_3",
+              "quantity": 20,
+              "total_cents": 11300,
+              "down_payment_cents": 5650,
+              "can_settle": true,
+              "reason": null
+            }
+          ],
+          "negotiation": null
+        },
+        "actor_id": "business_1",
+        "role": "buyer"
+      },
+      {
+        "sequence": 6,
+        "tool": "negotiate_offer",
+        "arguments": {
+          "supplier_id": "business_3",
+          "unit_price_cents": 508,
+          "down_payment_bps": 2000,
+          "due_in_ticks": 5,
+          "rationale": "Deterministic demo: request a discount, smaller down payment, and longer payment term."
+        },
+        "status": "accepted",
+        "result": {
+          "request": {
+            "unit_price_cents": 508,
+            "down_payment_bps": 2000,
+            "due_in_ticks": 5,
+            "rationale": "Deterministic demo: request a discount, smaller down payment, and longer payment term.",
+            "supplier_id": "business_3"
+          },
+          "status": "accepted",
+          "supplier_rationale": "Deterministic demo: accept only counteroffers meeting supplier policy."
+        },
+        "actor_id": "business_1",
+        "role": "buyer"
+      },
+      {
+        "sequence": 7,
+        "tool": "inspect_counteroffer",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "counteroffer": {
+            "unit_price_cents": 508,
+            "down_payment_bps": 2000,
+            "due_in_ticks": 5,
+            "rationale": "Deterministic demo: request a discount, smaller down payment, and longer payment term.",
+            "supplier_id": "business_3"
+          },
+          "policy": {
+            "supplier_id": "business_3",
+            "buyer_id": "business_1",
+            "quantity": 20,
+            "available_units": 1000,
+            "reference_unit_price_cents": 514,
+            "minimum_unit_price_cents": 411,
+            "minimum_down_payment_bps": 2000,
+            "maximum_due_in_ticks": 10,
+            "can_supply": true
+          },
+          "acceptable": true
+        },
+        "actor_id": "business_3",
+        "role": "supplier"
+      },
+      {
+        "sequence": 8,
+        "tool": "accept_counteroffer",
+        "arguments": {
+          "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy."
+        },
+        "status": "accepted",
+        "result": {
+          "unit_price_cents": 508,
+          "down_payment_bps": 2000,
+          "due_in_ticks": 5,
+          "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy.",
+          "offer_id": "offer:business_3:2",
+          "supplier_id": "business_3",
+          "quantity": 20,
+          "total_cents": 10160,
+          "down_payment_cents": 2032
+        },
+        "actor_id": "business_3",
+        "role": "supplier"
+      },
+      {
+        "sequence": 9,
+        "tool": "inspect_offers",
+        "arguments": {},
+        "status": "accepted",
+        "result": {
+          "quantity": 20,
+          "max_total_cents": 100000,
+          "offers": [
+            {
+              "unit_price_cents": 594,
+              "down_payment_bps": 5000,
+              "due_in_ticks": 3,
+              "rationale": "Deterministic demo: quote available stock on standard terms.",
+              "offer_id": "offer:business_2:1",
+              "supplier_id": "business_2",
+              "quantity": 20,
+              "total_cents": 11880,
+              "down_payment_cents": 5940,
+              "can_settle": true,
+              "reason": null
+            },
+            {
+              "unit_price_cents": 565,
+              "down_payment_bps": 5000,
+              "due_in_ticks": 3,
+              "rationale": "Deterministic demo: quote available stock on standard terms.",
+              "offer_id": "offer:business_3:1",
+              "supplier_id": "business_3",
+              "quantity": 20,
+              "total_cents": 11300,
+              "down_payment_cents": 5650,
+              "can_settle": true,
+              "reason": null
+            },
+            {
+              "unit_price_cents": 508,
+              "down_payment_bps": 2000,
+              "due_in_ticks": 5,
+              "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy.",
+              "offer_id": "offer:business_3:2",
+              "supplier_id": "business_3",
+              "quantity": 20,
+              "total_cents": 10160,
+              "down_payment_cents": 2032,
+              "can_settle": true,
+              "reason": null
+            }
+          ],
+          "negotiation": {
+            "request": {
+              "unit_price_cents": 508,
+              "down_payment_bps": 2000,
+              "due_in_ticks": 5,
+              "rationale": "Deterministic demo: request a discount, smaller down payment, and longer payment term.",
+              "supplier_id": "business_3"
+            },
+            "status": "accepted",
+            "supplier_rationale": "Deterministic demo: accept only counteroffers meeting supplier policy."
+          }
+        },
+        "actor_id": "business_1",
+        "role": "buyer"
+      },
+      {
+        "sequence": 10,
+        "tool": "select_offer",
+        "arguments": {
+          "offer_id": "offer:business_3:2",
+          "rationale": "Deterministic demo: choose eligible terms minimizing immediate cash use, then full price."
+        },
+        "status": "accepted",
+        "result": {
+          "selected_offer": {
+            "unit_price_cents": 508,
+            "down_payment_bps": 2000,
+            "due_in_ticks": 5,
+            "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy.",
+            "offer_id": "offer:business_3:2",
+            "supplier_id": "business_3",
+            "quantity": 20,
+            "total_cents": 10160,
+            "down_payment_cents": 2032
+          },
+          "rationale": "Deterministic demo: choose eligible terms minimizing immediate cash use, then full price."
+        },
+        "actor_id": "business_1",
+        "role": "buyer"
+      }
+    ],
+    "negotiation": {
+      "request": {
+        "unit_price_cents": 508,
+        "down_payment_bps": 2000,
+        "due_in_ticks": 5,
+        "rationale": "Deterministic demo: request a discount, smaller down payment, and longer payment term.",
+        "supplier_id": "business_3"
+      },
+      "status": "accepted",
+      "supplier_rationale": "Deterministic demo: accept only counteroffers meeting supplier policy."
+    },
+    "selected_offer": {
+      "unit_price_cents": 508,
+      "down_payment_bps": 2000,
+      "due_in_ticks": 5,
+      "rationale": "Deterministic demo: accept only counteroffers meeting supplier policy.",
+      "offer_id": "offer:business_3:2",
+      "supplier_id": "business_3",
+      "quantity": 20,
+      "total_cents": 10160,
+      "down_payment_cents": 2032
+    },
+    "buyer_rationale": "Deterministic demo: choose eligible terms minimizing immediate cash use, then full price.",
+    "contract_id": "contract_supply_example",
+    "settlement": {
+      "run_id": "supply_example",
+      "simulation_id": "world_procurement_example",
+      "contract": {
+        "contract_id": "contract_supply_example",
+        "buyer_id": "business_1",
+        "supplier_id": "business_3",
+        "quantity": 20,
+        "unit_price_cents": 508,
+        "total_cents": 10160,
+        "down_payment_cents": 2032,
+        "paid_cents": 2032,
+        "outstanding_cents": 8128,
+        "written_off_cents": 0,
+        "created_tick": 0,
+        "due_tick": 5,
+        "missed_payment_ticks": 0,
+        "status": "open",
+        "creation_transaction_id": "procurement:supply_example"
+      },
+      "receipt": {
+        "transaction_id": "procurement:supply_example",
+        "lines": [
+          {
+            "account_id": "business_1:materials",
+            "signed_cents": 10160
+          },
+          {
+            "account_id": "business_1:deposit",
+            "signed_cents": -2032
+          },
+          {
+            "account_id": "business_1:payable_contract_supply_example",
+            "signed_cents": -8128
+          },
+          {
+            "account_id": "business_3:deposit",
+            "signed_cents": 2032
+          },
+          {
+            "account_id": "business_3:receivable_contract_supply_example",
+            "signed_cents": 8128
+          },
+          {
+            "account_id": "business_3:equity",
+            "signed_cents": -10160
+          },
+          {
+            "account_id": "business_3:materials",
+            "signed_cents": 0
+          },
+          {
+            "account_id": "business_3:equity",
+            "signed_cents": 0
+          },
+          {
+            "account_id": "bank_1:deposit_business_1",
+            "signed_cents": 2032
+          },
+          {
+            "account_id": "bank_3:deposit_business_3",
+            "signed_cents": -2032
+          },
+          {
+            "account_id": "bank_1:reserves",
+            "signed_cents": -2032
+          },
+          {
+            "account_id": "bank_3:reserves",
+            "signed_cents": 2032
+          }
+        ],
+        "metadata": {
+          "type": "supplier_contract",
+          "tick": 0,
+          "request": {
+            "type": "supplier_contract",
+            "contract_id": "contract_supply_example",
+            "buyer_id": "business_1",
+            "supplier_id": "business_3",
+            "quantity": 20,
+            "unit_price_cents": 508,
+            "down_payment_bps": 2000,
+            "due_in_ticks": 5
+          }
+        }
+      },
+      "audit": {
+        "balanced": true,
+        "journal_matches_balances": true,
+        "transaction_count": 60,
+        "account_count": 277,
+        "bank_counterparties_match": true,
+        "interbank_counterparties_match": true,
+        "public_counterparties_match": true,
+        "supplier_counterparties_match": true
+      }
+    },
+    "error": null
+  },
+  "contract_after_due_tick": {
+    "contract_id": "contract_supply_example",
+    "buyer_id": "business_1",
+    "supplier_id": "business_3",
+    "quantity": 20,
+    "unit_price_cents": 508,
+    "total_cents": 10160,
+    "down_payment_cents": 2032,
+    "paid_cents": 10160,
+    "outstanding_cents": 0,
+    "written_off_cents": 0,
+    "created_tick": 0,
+    "due_tick": 5,
+    "missed_payment_ticks": 0,
+    "status": "paid",
+    "creation_transaction_id": "procurement:supply_example",
+    "last_attempt_tick": 5
+  },
+  "audit_after_due_tick": {
+    "balanced": true,
+    "journal_matches_balances": true,
+    "transaction_count": 467,
+    "account_count": 277,
+    "bank_counterparties_match": true,
+    "interbank_counterparties_match": true,
+    "public_counterparties_match": true,
+    "supplier_counterparties_match": true
+  },
+  "payment_events": [
+    {
+      "sequence": 3,
+      "simulation_id": "world_procurement_example",
+      "simulation_tick": 0,
+      "event_type": "supplier_down_payment",
+      "agent_id": "business_1",
+      "counterparty_id": "business_3",
+      "amount_cents": 2032,
+      "transaction_id": "procurement:supply_example",
+      "details": {
+        "contract_id": "contract_supply_example"
+      }
+    },
+    {
+      "sequence": 338,
+      "simulation_id": "world_procurement_example",
+      "simulation_tick": 5,
+      "event_type": "supplier_balance_paid",
+      "agent_id": "business_1",
+      "counterparty_id": "business_3",
+      "amount_cents": 8128,
+      "transaction_id": "tick:5:contract_pay:contract_supply_example",
+      "details": {
+        "contract_id": "contract_supply_example"
+      }
+    }
+  ]
+}
